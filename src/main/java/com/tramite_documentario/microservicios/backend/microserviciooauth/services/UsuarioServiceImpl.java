@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioServiceImpl implements UserDetailsService, UsuarioService{
+public class UsuarioServiceImpl implements UserDetailsService, UsuarioService {
 
     @Autowired
     private UsuarioFeignClient usuarioFeignClient;
@@ -37,7 +37,7 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService{
         try {
             Usuario usuario = usuarioFeignClient.findByUsername(s);
 
-            if (usuario == null){
+            if (usuario == null) {
                 logger.error("Error en login, no existe el usuaio '" + s + "' en el sistema");
                 throw new UsernameNotFoundException("Error en login, no existe el usuaio '" + s + "' en el sistema");
             }
@@ -51,8 +51,7 @@ public class UsuarioServiceImpl implements UserDetailsService, UsuarioService{
             logger.info("Usuario logeado: " + s);
 
             return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true, authorities);
-        }
-        catch (FeignException e){
+        } catch (FeignException e) {
             String error = "Error en login, no existe el usuario '" + s + "' en el sistema";
             logger.error(error);
             throw new UsernameNotFoundException(error);
