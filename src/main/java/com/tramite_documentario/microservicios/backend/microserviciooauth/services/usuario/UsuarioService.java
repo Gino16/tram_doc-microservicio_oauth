@@ -1,4 +1,4 @@
-package com.tramite_documentario.microservicios.backend.microserviciooauth.services;
+package com.tramite_documentario.microservicios.backend.microserviciooauth.services.usuario;
 
 import com.tramite_documentario.microservicios.backend.commonusuarios.models.entity.Usuario;
 
